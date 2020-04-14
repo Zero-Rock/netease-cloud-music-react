@@ -1,8 +1,8 @@
 {
   "name": "netease-cloud-music-react",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "网易云音乐H5",
+  "main": "src/main.tsx",
   "scripts": {
     "build": "node build/build.js"
   },
@@ -10,8 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/kivamobius/netease-cloud-music-react.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "含光<mobius_pan@yeah.net>",
+  "keywords": [
+    "react",
+    "react-hooks",
+    "cube-state",
+    "typescript"
+  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kivamobius/netease-cloud-music-react/issues"
   },
