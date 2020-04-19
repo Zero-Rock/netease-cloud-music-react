@@ -15,8 +15,8 @@
 </head>
 <body>
 <div id="cloud-app"></div>
-<% if (htmlWebpackPlugin.options.data.injectDll){%>
-<script src="./<%= htmlWebpackPlugin.options.data.rootPath %>/js/app.dll.js"></script>
+<% if (htmlWebpackPlugin.options.data.injectDll){ %>
+    <script src="./<%= htmlWebpackPlugin.options.data.rootPath %>/js/app.dll.js" type="application/javascript"></script>
 <% } %>
 </body>
 </html>
