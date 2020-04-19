@@ -3,12 +3,21 @@
  */
 import React from 'react';
 import { isEmpty } from 'lodash';
+import { If } from 'src/components';
+
+const { Else } = If;
 
 const a = process.env.NODE_ENV;
 const App = () => {
-  const ise = isEmpty(a);
+  const is: boolean = isEmpty(a);
   return (
-    <>111{ise ? a: ''}</>
+    <>
+      <If is={is}>
+        mobius
+        <Else/>
+        sdddd
+      </If>
+    </>
   );
 };
 
