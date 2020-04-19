@@ -4,22 +4,11 @@
 const ora = require( "ora" );
 const rm = require( "rimraf" );
 const webpack = require( "webpack" );
+const { exec } = require( "child_process" );
 const webpackConfig = require( "./webpack.prod.conf" );
 const checkVersion = require( "./version" );
-const { resolve, CHALK } = require( "./utils" );
-
-checkVersion();
-const spinner = ora( "building for production...\n" );
-// spinner.start();
-CHALK.info( "start delete dist" );
-rm( resolve( "dist" ), err => {
-  if (err) {
-    throw err;
-    process.exit( 1 );
-  }
-  // spinner.stop();
-  CHALK.success( "delete dist success" );
-  spinner.start();
+const { resolve, CHALK, PKG } = require( "./utils" );
+const build = () => {
   webpack( webpackConfig, ( ( error, stats ) => {
     spinner.stop();
     if (error) {
@@ -37,9 +26,30 @@ rm( resolve( "dist" ), err => {
       CHALK.error( "Build failed with errors.\n" );
       process.exit( 1 );
     }
-    CHALK.success('Build complete.\n');
-    CHALK.info('Tip: built files are meant to be served over an HTTP server.\n'
-               + '  Opening index.html over file:// won\'t work.\n')
+    CHALK.success( "Build complete.\n" );
+    CHALK.info( "Tip: built files are meant to be served over an HTTP server.\n"
+                + "  Opening index.html over file:// won't work.\n" );
   } ) );
+};
+checkVersion();
+const spinner = ora( "building for production...\n" );
+// spinner.start();
+CHALK.info( "start delete dist" );
+rm( resolve( "dist" ), err => {
+  if (err) {
+    throw err;
+    process.exit( 1 );
+  }
+  // spinner.stop();
+  CHALK.success( "delete dist success" );
+  spinner.start();
+  exec( PKG.scripts.dll, ( err, stdout, stderr ) => {
+    if (err) {
+      console.error( err );
+      return;
+    }
+    console.log( stdout );
+    build();
+  } );
 
 } );

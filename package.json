@@ -4,7 +4,17 @@
   "description": "网易云音乐H5",
   "main": "src/main.tsx",
   "scripts": {
-    "build": "node build/build.js"
+    "start": "NODE_ENV=development node build/dev.server.webpack.js",
+    "lint:ts": "tslint -c tslint.json 'src/**/*{.ts,.tsx}'",
+    "lint:tsFix": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'",
+    "dll": "webpack --config build/webpack.dll.conf.js",
+    "testBuild": "webpack --config build/webpack.dev.conf.js",
+    "build": "NODE_ENV=production node build/build.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:ts"
+    }
   },
   "repository": {
     "type": "git",
@@ -44,22 +54,32 @@
     "@babel/runtime": "^7.8.7",
     "@types/lodash": "^4.14.149",
     "@types/node": "^13.7.7",
-    "@types/webpack-env": "^1.15.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "@types/webpack": "^4.41.11",
+    "@types/webpack-env": "^1.15.1",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
     "babel-plugin-import": "^1.13.0",
     "chalk": "^4.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "express": "^4.17.1",
+    "html-webpack-plugin": "^4.2.0",
+    "husky": "^4.2.5",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "ora": "^4.0.3",
+    "portfinder": "^1.0.25",
     "rimraf": "^3.0.2",
     "semver": "^7.3.0",
     "shelljs": "^0.8.3",
     "tslint": "^6.1.1",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^4.2.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2"
   },
   "engines": {

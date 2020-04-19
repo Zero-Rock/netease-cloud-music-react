@@ -15,7 +15,7 @@ const CHALK = {
    * @param message {string}
    */
   success: ( message ) => {
-    console.log( "🍺 " + chalk.cyanBright( message ) );
+    console.log( "🍺 " + chalk.cyanBright( message ) + "\n" );
   },
 
   /**
@@ -23,14 +23,14 @@ const CHALK = {
    * @param message {string}
    */
   info: ( message ) => {
-    console.log( "🐚 " + chalk.yellowBright( message ) );
+    console.log( "🐚 " + chalk.yellowBright( message ) + "\n" );
   },
   /**
    *
    * @param message {string}
    */
   error: ( message ) => {
-    console.log( "💔 " + chalk.redBright( message ) );
+    console.log( "💔 " + chalk.redBright( message ) + "\n" );
   }
 };
 

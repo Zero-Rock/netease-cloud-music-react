@@ -9,10 +9,14 @@
     <meta name="author" content="含光<mobius_pan@yeah.net>">
     <meta name="date" content="2020/4/14">
     <meta name="time" content="10:06 下午">
-    <meta name="keyword" content="cloud-app">
-    <title>index</title>
+    <meta name="keyword" content="<%= htmlWebpackPlugin.options.data.title %>">
+    <title><%= htmlWebpackPlugin.options.data.title %></title>
+    <link rel="shortcut" href="./<%= htmlWebpackPlugin.options.data.rootPath %>/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div id="cloud-app"></div>
+<% if (htmlWebpackPlugin.options.data.injectDll){%>
+<script src="./<%= htmlWebpackPlugin.options.data.rootPath %>/js/app.dll.js"></script>
+<% } %>
 </body>
 </html>
